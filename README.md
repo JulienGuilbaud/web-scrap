@@ -15,6 +15,12 @@ Résultat avec l'ancien code utilisant selenium avec un VPN activé ou non :
 
 La première page s'ouvre correctement, mais à la seconde, tout se bloque.
 
-## Navigation avec selenium
+## Navigation avec navigation_selenium.py
 
 En résumé, ce script permet d'ouvrir automatiquement une série de liens, chacun dans une nouvelle session de navigateur. L'utilisation de temps d'attente aléatoires et d'options de configuration du navigateur vise à rendre le comportement du script moins prévisible et à contourner les mécanismes de détection de bots, notamment ceux mis en place par services de protection anti-bot.
+
+## Scrap 
+
+## environnement de dev
+Python 3.12.4
+Selenium 4.1

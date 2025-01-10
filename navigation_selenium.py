@@ -1,24 +1,27 @@
 import random
 import time
+import selenium
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+    # --- fonction a importer ---
 def open_browser_window(url):
     """Ouvre une nouvelle session de navigateur pour chaque lien avec la classe 'passemname'.
 
     Args:
         url: L'URL de la page principale.
     """
-
+    # --- Configuration du pilote web ---
+    service = Service(executable_path=r'.\webdriver\chromedriver.exe')
     options = webdriver.ChromeOptions()
-    #options.add_argument('--headless')  # Exécution en mode sans tête (headless) :  n'affiche pas le navigateur
-    #options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36') # Modification de l'user-agent (pour simuler un navigateur différent)
+   
    
 
     try:
-        driver = webdriver.Chrome(options=options) # Driver initial pour la page principale
+        print(selenium.__version__)
+        driver = webdriver.Chrome(service=service, options=options) # Driver initial pour la page principale
         driver.get(url) # Ouvre l'URL dans le navigateur
 
         div_elements = driver.find_elements(By.CLASS_NAME, "passemname") # Trouve tous les éléments <div> avec la classe "passemname"
@@ -36,7 +39,7 @@ def open_browser_window(url):
         for href in hrefs: # Boucle sur chaque lien dans la liste
             if href: # Vérifie si le lien existe
                 print(href) # Affiche le lien
-                new_driver = webdriver.Chrome(options=options)  # Nouveau driver pour chaque lien (nouvelle session)
+                new_driver = webdriver.Chrome(service=service, options=options)  # Nouveau driver pour chaque lien (nouvelle session)
                 new_driver.get(href) # Ouvre le lien dans une nouvelle session de navigateur
                 # Traitement de la nouvelle page dans new_driver ici... (code à ajouter pour interagir avec chaque page)
                 time.sleep(random.uniform(1, 2)) # Attend un temps aléatoire entre 1 et 2 secondes
