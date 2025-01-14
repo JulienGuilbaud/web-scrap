@@ -31,6 +31,10 @@ def scrape(driver):
 
     content = driver.page_source
     soup = BeautifulSoup(content, 'lxml')
+
+            # --- Extraction du nom de l'ensemble ---
+    group_name = soup.select_one("h2").text.strip()
+    print(group_name)
     
             # --- Extraction des informations sur les pièces ---
 

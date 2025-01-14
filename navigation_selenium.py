@@ -47,7 +47,6 @@ def open_browser_window(url):
                 # Traitement de la nouvelle page dans new_driver ici... (code à ajouter pour interagir avec chaque page)
                 scrape(new_driver)
 
-                time.sleep(random.uniform(1, 2)) # Attend un temps aléatoire entre 1 et 2 secondes
                 new_driver.quit()  # Ferme le driver (la session) après le traitement
 
     except Exception as e: # Gère les exceptions (erreurs)
