@@ -148,9 +148,6 @@ def fetch(soup, urlsite, brand, vehiculeName, vehiculeYear, driver):
                 else:
                     partsqty = 1
 
-
-
-
                 # Extraction du nom de la pièce
                 
                 parts_name_element = part.find('div', attrs={'class': 'c1a'}).find("span") 
@@ -171,8 +168,6 @@ def fetch(soup, urlsite, brand, vehiculeName, vehiculeYear, driver):
                         parts_name = "N/A"
                 else:
                     parts_name = "N/A"
-
-
 
                 # Extraction du reference de la pièce
 
