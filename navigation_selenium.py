@@ -6,6 +6,8 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from scrap_fonction import scrape
+
     # --- fonction a importer ---
 def open_browser_window(url):
     """Ouvre une nouvelle session de navigateur pour chaque lien avec la classe 'passemname'.
@@ -41,7 +43,10 @@ def open_browser_window(url):
                 print(href) # Affiche le lien
                 new_driver = webdriver.Chrome(service=service, options=options)  # Nouveau driver pour chaque lien (nouvelle session)
                 new_driver.get(href) # Ouvre le lien dans une nouvelle session de navigateur
+                
                 # Traitement de la nouvelle page dans new_driver ici... (code à ajouter pour interagir avec chaque page)
+                scrape(new_driver)
+
                 time.sleep(random.uniform(1, 2)) # Attend un temps aléatoire entre 1 et 2 secondes
                 new_driver.quit()  # Ferme le driver (la session) après le traitement
 
